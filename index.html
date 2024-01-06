@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/leaflet.css">
+</head>
+
+<body>
+  <div id="loader" class="loader-wrapper">
+    <span class="loader"></span>
+  </div>
+
+  <header class="header">
+    <div class="container">
+
+      <div class="header__wrapper">
+
+        <div class="header__wrapper-box">
+          <h1 class="header__wrapper-title">App Weather for five days</h1>
+        </div>
+
+        <form class="form">
+          <input id="input" class="form__input" type="text" placeholder="Enter the name of the city">
+          <button id="btn" class="form__btn">Search</button>
+        </form>
+        <div id="suggestion-wrapper"></div>
+      </div>
+
+    </div>
+  </header>
+
+
+  <div class="main">
+
+
+    <div class="container">
+      <div class="time"></div>
+
+      <div class="main__inner ">
+        <div id="cardId" class="card "></div>
+        <div id="map"></div>
+      </div>
+
+    </div>
+
+    <div class="container container-block">
+      <div class="container-weather"></div>
+      <div class="container-show"></div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p class="footer__text">Made by good people</p>
+  </footer>
+
+
+
+  <script src="js/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
