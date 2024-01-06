@@ -505,6 +505,15 @@ body {
 }
 
 @media screen and (max-width: 545px) {
+
+  #suggestion-wrapper {
+    top: 101px;
+    width: 381px;
+  }
+
+}
+
+@media screen and (max-width: 545px) {
   .container-show {
     margin-left: 0;
     width: 100%;
@@ -513,6 +522,8 @@ body {
   .header__wrapper-title {
     font-size: 32px;
   }
+
+
 
   .form {
     width: 380px;
@@ -611,7 +622,9 @@ body {
     display: none;
   }
 
-
+  #suggestion-wrapper {
+    width: 281px;
+  }
 
   .form {
     width: 280px;
@@ -655,6 +668,7 @@ body {
 
   .main {
     margin-top: 15px;
+    margin-bottom: 0;
   }
 
   .time {

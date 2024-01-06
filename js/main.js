@@ -247,44 +247,36 @@ function showOnMap(lat, lan) {
 
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 13,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
   }).addTo(map)
 }
 
 //! Requesting, receiving and filtering cities via the API
-function showListCities() {
-  let mass = []
+async function showListCities() {
+  const input = document.getElementById('input');
+  const suggestionWrapper = document.getElementById('suggestion-wrapper');
 
-  fetch(`https://raw.githubusercontent.com/lmfmaier/cities-json/master/cities500.json`)
-    .then(response => response.json())
-    .then(data => {
+  try {
+    const response = await fetch(`https://raw.githubusercontent.com/lmfmaier/cities-json/master/cities500.json`);
+    const data = await response.json();
 
-      data.forEach(city => mass.push(city.name))
-      return mass
-    })
-    .then(mass => {
+    const mass = data.map(city => city.name);
 
-      const filterSet = new Set(mass);
-      const newFilterMass = Array.from(filterSet)
+    input.addEventListener('input', function () {
+      suggestionWrapper.style.display = 'block';
+      const inputText = input.value.toLowerCase();
+      const suggestions = mass.filter(city => city.toLowerCase().startsWith(inputText));
 
-      input.addEventListener('input', function () {
-        suggWrapp.style.display = 'block'
-        const inputText = input.value.toLowerCase();
-        const suggestions = newFilterMass.filter(function (city) {
-          return city.toLowerCase().startsWith(inputText);
-
-        });
-
-        if (suggestions.length === 0) {
-          suggWrapp.style.display = 'none'
-        }
-        displaySuggestions(suggestions);
-
-      })
-
-    })
-
+      if (suggestions.length === 0) {
+        suggestionWrapper.style.display = 'none';
+      }
+      displaySuggestions(suggestions);
+    });
+  } catch (error) {
+    console.error('Error fetching cities:', error);
+  }
 }
+
 showListCities()
 
 //! Display a list of cities in the search when entering the first letters of the city name
@@ -305,6 +297,7 @@ function displaySuggestions(suggestions) {
     suggWrapp.appendChild(div);
   });
 }
+
 
 //! Hide the list of cities in the search when clicking on a document anywhere
 document.addEventListener('click', function (event) {
