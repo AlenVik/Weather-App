@@ -316,7 +316,7 @@ document.addEventListener('click', function (event) {
 
 //! Get the current time in the city based on the coordinates
 function getCurrentTime(lat, lon) {
-  fetch(`http://api.timezonedb.com/v2.1/get-time-zone?key=VZZ2OFVP7KGF&format=json&by=position&lat=${lat}&lng=${lon}`)
+  fetch(`https://api.timezonedb.com/v2.1/get-time-zone?key=VZZ2OFVP7KGF&format=json&by=position&lat=${lat}&lng=${lon}`)
     .then(response => response.json())
     .then(data => {
       renderCurrentTime(data.formatted)
