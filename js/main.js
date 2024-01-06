@@ -157,7 +157,7 @@ btn.addEventListener('click', function (e) {
   const cityName = input.value.trim();
   input.value = '';
 
-  fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=${API_KEY}`)
+  fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=${API_KEY}`)
     .then(response => response.json())
     .then(data => data[0])
     .then(data => {
@@ -184,7 +184,7 @@ btn.addEventListener('click', function (e) {
   suggWrapp.style.display = 'none';
 
   //! Weather request for 5 days
-  fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=${API_KEY}`)
+  fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=${API_KEY}`)
     .then(response => response.json())
     .then(data => {
       return data[0];
